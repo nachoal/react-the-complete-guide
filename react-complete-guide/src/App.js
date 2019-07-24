@@ -41,7 +41,8 @@ class App extends Component {
   // The render method is used when creating a Component by extending the component object
   render() {
     const style = {
-      backgroundColor: 'red',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -63,14 +64,25 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red'); // classes = ['red]
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
     return (
       <div className="App">
        <h1>Hi, I'm a React </h1>
-       <p>This is really working!</p>
+       <p className={classes.join(' ')}>This is really working!</p>
        <button
        style={style} 
-       onClick={this.togglePersonsHandler}>Switch Name</button>
+       onClick={this.togglePersonsHandler}>Toogle persons</button>
        {persons}
       </div>
     );
